@@ -191,6 +191,71 @@ namespace Konevskii_PR17.Pages
                     order.IsChecked = dishes[int.Parse(button1.Tag.ToString())].sizes[2].orders;
                 };
                 global.Children.Add(button3);
+
+                minus.Content = "-";
+                minus.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+                minus.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+                minus.Margin = new Thickness(0, 0, 103.6f, 10);
+                minus.Width = 19;
+                minus.Tag = i;
+                minus.Click += delegate
+                {
+                    if (count.Text != "")
+                    {
+                        if (int.Parse(count.Text) > 0)
+                        {
+                            count.Text = (int.Parse(count.Text) - 1).ToString();
+                            int id = int.Parse(minus.Tag.ToString());
+                            dishes[id].sizes[dishes[id].activeSize].countOrder = int.Parse(count.Text);
+                        }
+                    }
+                };
+                global.Children.Add(minus);
+
+                count.Text = "0";
+                count.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+                count.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+                count.Margin = new Thickness(0, 0, 33.6f, 10);
+                count.TextWrapping = TextWrapping.Wrap;
+                count.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+                count.Width = 65;
+                count.Height = 19;
+                count.Tag = i;
+                global.Children.Add(count);
+
+                plus.Content = "+";
+                plus.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+                plus.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+                plus.Margin = new Thickness(0, 0, 9.6f, 10);
+                plus.Width = 19;
+                plus.Tag = i;
+                plus.Click += delegate
+                {
+                    if (count.Text != "")
+                    {
+                        if (int.Parse(count.Text) < 15)
+                        {
+                            count.Text = (int.Parse(count.Text) + 1).ToString();
+                            int id = int.Parse(plus.Tag.ToString());
+                            dishes[id].sizes[dishes[id].activeSize].countOrder = int.Parse(count.Text);
+                        }
+                    }
+                };
+                global.Children.Add(plus);
+
+                order.Content = "Выбрать";
+                order.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+                order.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+                order.Margin = new Thickness(0, 0, 128, 13);
+                order.Tag = i;
+                order.Click += delegate
+                {
+                    int id = int.Parse(order.Tag.ToString());
+                    dishes[id].sizes[dishes[id].activeSize].orders = (bool)order.IsChecked;
+                };
+                global.Children.Add(order);
+
+                parrent.Children.Add(global);
             }
         }
     }
