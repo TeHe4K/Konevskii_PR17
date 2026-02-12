@@ -26,7 +26,7 @@ namespace Konevskii_PR17
         {
             InitializeComponent();
             localPath = System.IO.Directory.GetCurrentDirectory();
-
+            
             OpenPages(pages.main);
         }
 

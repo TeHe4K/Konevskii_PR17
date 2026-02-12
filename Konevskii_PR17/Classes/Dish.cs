@@ -27,7 +27,8 @@ namespace Konevskii_PR17.Classes
 
         public class Ingredient 
         {
-            public int id, name, wes, price;
+            public int id, wes, price;
+            public string name;
 
             public string img;
             public int count;
